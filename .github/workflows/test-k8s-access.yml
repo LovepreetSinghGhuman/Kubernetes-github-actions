@@ -1,0 +1,48 @@
+# filepath: c:\VSCode\Kubernetes-github-action\.github\workflows\Kubernetes Access Test.yml
+name: Kubernetes Access Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-kubernetes-access:
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up kubectl
+        run: |
+          curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x ./kubectl
+          sudo mv ./kubectl /usr/local/bin/kubectl
+
+      - name: Configure Kubernetes context
+        run: |
+          kubectl config set-cluster my-cluster --server=https://<your-kubernetes-api-server> --insecure-skip-tls-verify=true
+          kubectl config set-credentials my-user --token=<your-kubernetes-token>
+          kubectl config set-context my-context --cluster=my-cluster --user=my-user
+          kubectl config use-context my-context
+
+      - name: Generate random pod name
+        id: rand
+        run: echo "POD_NAME=test-pod-$(openssl rand -hex 4)" >> $GITHUB_ENV
+
+      - name: Apply Kubernetes object with random name
+        run: |
+          echo "
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: ${POD_NAME}
+            namespace: <your-namespace>
+          spec:
+            containers:
+            - name: nginx
+              image: nginx:alpine
+          " | kubectl apply -f -
+
+      - name: Check for pods in namespace
+        run: |
+          kubectl get pods -n <your-namespace>

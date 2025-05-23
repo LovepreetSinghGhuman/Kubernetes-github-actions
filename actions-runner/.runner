@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 2,
+  "agentName": "WORKSTATIONPC",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus2.actions.githubusercontent.com/jEZm7aGMxekicEQl4FOFigOeT4tEKMX68BFvMMPgwPnTYMKvqj/",
+  "gitHubUrl": "https://github.com/LovepreetSinghGhuman/Kubernetes-github-actions",
+  "workFolder": "_work"
+}

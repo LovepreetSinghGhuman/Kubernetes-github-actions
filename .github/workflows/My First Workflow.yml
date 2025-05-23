@@ -17,8 +17,8 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    # Change this to use your self-hosted runner
+    runs-on: self-hosted
 
     # This job checks out the repository, builds a Docker image from your Dockerfile,
     # tags it as hello-world-nginx:v1, and runs a container mapping port 8081 on the host

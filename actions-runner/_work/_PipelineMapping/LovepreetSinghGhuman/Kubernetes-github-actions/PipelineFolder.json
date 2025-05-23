@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "LovepreetSinghGhuman/Kubernetes-github-actions",
+  "pipelineDirectory": "Kubernetes-github-actions",
+  "workspaceDirectory": "Kubernetes-github-actions\\Kubernetes-github-actions",
+  "repositories": {
+    "LovepreetSinghGhuman/Kubernetes-github-actions": {
+      "repositoryPath": "Kubernetes-github-actions\\Kubernetes-github-actions",
+      "lastRunOn": "05/23/2025 16:35:51 +02:00"
+    }
+  },
+  "lastRunOn": "05/23/2025 16:35:51 +02:00"
+}
